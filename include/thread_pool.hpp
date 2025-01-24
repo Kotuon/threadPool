@@ -14,8 +14,6 @@
 #include "join_threads.hpp"
 #include "thread_safe_queue.hpp"
 
-#include "trace.hpp"
-
 class ThreadPool {
 private:
     using TaskType = FunctionWrapper;

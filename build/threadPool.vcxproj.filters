@@ -4,6 +4,9 @@
     <ClCompile Include="C:\Users\Kelson\Documents\Projects\threadPool\src\static_thread_pool.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\Kelson\Documents\Projects\threadPool\src\thread_pool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\Kelson\Documents\Projects\threadPool\CMakeLists.txt" />

@@ -270,6 +270,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C:\Users\Kelson\Documents\Projects\threadPool\src\static_thread_pool.cpp" />
+    <ClCompile Include="C:\Users\Kelson\Documents\Projects\threadPool\src\thread_pool.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="C:\Users\Kelson\Documents\Projects\threadPool\build\ZERO_CHECK.vcxproj">
