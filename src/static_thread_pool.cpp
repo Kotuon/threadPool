@@ -18,17 +18,6 @@ StaticThreadPool::~StaticThreadPool() {
         thd.join();
 }
 
-template < class FunctionType, class... ArgTypes >
-void StaticThreadPool::initialize( FunctionType&& Func, ArgTypes&&... Args ) {
-    for ( size_t i = 0; i < ThreadCount; ++i ) {
-        Tasks.push_back( std::bind( std::forward< FunctionType >( Func ),
-                                    std::forward< ArgTypes >( Args )..., i ) );
-
-        Threads.push_back(
-            std::thread( &StaticThreadPool::workerThread, this, i ) );
-    }
-}
-
 void StaticThreadPool::runTask() {
     StartSync.arrive_and_wait();
     FinishSync.arrive_and_wait();

@@ -20,7 +20,16 @@ public:
     ~StaticThreadPool();
 
     template < class FunctionType, class... ArgTypes >
-    void initialize( FunctionType&& Func, ArgTypes&&... Args );
+    void initialize( FunctionType&& Func, ArgTypes&&... Args ) {
+        for ( size_t i = 0; i < ThreadCount; ++i ) {
+            Tasks.push_back( std::bind( std::forward< FunctionType >( Func ),
+                                        std::forward< ArgTypes >( Args )...,
+                                        i ) );
+
+            Threads.push_back(
+                std::thread( &StaticThreadPool::workerThread, this, i ) );
+        }
+    }
 
     void runTask();
 

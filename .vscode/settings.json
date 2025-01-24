@@ -2,6 +2,7 @@
     "files.associations": {
         "vector": "cpp",
         "barrier": "cpp",
-        "thread": "cpp"
+        "thread": "cpp",
+        "type_traits": "cpp"
     }
 }
