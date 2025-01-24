@@ -1,0 +1,10 @@
+^C:\USERS\KELSON\DOCUMENTS\PROJECTS\THREADPOOL\BUILD\CMAKEFILES\C1132ED00C13095DE7D251BB67547CD5\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Kelson/Documents/Projects/threadPool -BC:/Users/Kelson/Documents/Projects/threadPool/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Kelson/Documents/Projects/threadPool/build/threadPool.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

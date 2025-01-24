@@ -1,0 +1,3 @@
+C:/Users/Kelson/Documents/Projects/threadPool/build/CMakeFiles/threadPool.dir
+C:/Users/Kelson/Documents/Projects/threadPool/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/Kelson/Documents/Projects/threadPool/build/CMakeFiles/ZERO_CHECK.dir
