@@ -10,7 +10,7 @@
 #include <thread>
 #include <vector>
 
-class FunctionWrapper;
+#include "function_wrapper.hpp"
 
 class StaticThreadPool {
 public:

@@ -1,7 +1,6 @@
 
 #include "static_thread_pool.hpp"
 
-#include "function_wrapper.hpp"
 
 StaticThreadPool::StaticThreadPool( size_t ThreadCount_ ) {
     ThreadCount = ThreadCount_;

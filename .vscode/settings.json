@@ -3,6 +3,7 @@
         "vector": "cpp",
         "barrier": "cpp",
         "thread": "cpp",
-        "type_traits": "cpp"
+        "type_traits": "cpp",
+        "functional": "cpp"
     }
 }
