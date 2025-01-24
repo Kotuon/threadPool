@@ -10,61 +10,24 @@
 #include <thread>
 #include <vector>
 
-#include "function_wrapper.hpp"
+class FunctionWrapper;
 
-#include "trace.hpp"
-
-// std::array< unsigned, 32 > a = { 0 };
 class StaticThreadPool {
 public:
     StaticThreadPool(
-        size_t ThreadCount_ = std::thread::hardware_concurrency() ) {
-        ThreadCount = ThreadCount_;
-    }
+        size_t ThreadCount_ = std::thread::hardware_concurrency() );
 
-    ~StaticThreadPool() {
-        if ( IsDone ) return;
-
-        for ( auto& thd : Threads )
-            thd.join();
-    }
+    ~StaticThreadPool();
 
     template < class FunctionType, class... ArgTypes >
-    void initialize( FunctionType&& Func, ArgTypes&&... Args ) {
-        for ( size_t i = 0; i < ThreadCount; ++i ) {
-            Tasks.push_back( std::bind( std::forward< FunctionType >( Func ), i,
-                                        std::forward< ArgTypes >( Args )... ) );
+    void initialize( FunctionType&& Func, ArgTypes&&... Args );
 
-            Threads.push_back(
-                std::thread( &StaticThreadPool::workerThread, this, i ) );
-        }
-    }
+    void runTask();
 
-    void runTask() {
-        size_t j = 0;
-        while ( !IsDone ) {
-            StartSync.arrive_and_wait();
-
-            ++j;
-            if ( j > 2 ) {
-                IsDone = true;
-                Trace::message( "Set isDone to true." );
-            }
-            FinishSync.arrive_and_wait();
-        }
-
-        for ( auto& thd : Threads )
-            thd.join();
-    }
+    const size_t getThreadCount() const;
 
 private:
-    void workerThread( size_t Id ) {
-        while ( !IsDone ) {
-            StartSync.arrive_and_wait();
-            Tasks[Id]();
-            FinishSync.arrive_and_wait();
-        }
-    }
+    void workerThread( size_t Id );
 
     std::vector< std::thread > Threads;
     std::vector< FunctionWrapper > Tasks;
